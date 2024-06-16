@@ -1,6 +1,7 @@
 const express = require("express");
 const { Connectmongodb } = require("./connect");
 const urlRoute = require("./routes/url");
+const userRoute = require("./routes/users");
 const URL = require("./models/url");
 const path = require("path");
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/url", urlRoute);
+app.use("/users", userRoute);
 app.use("/", staticRouter);
 
 app.get("/url/:shortId", async (req, res) => {
